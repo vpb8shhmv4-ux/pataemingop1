@@ -1,1 +1,18 @@
-
+{
+  "hero": {
+    "imageUrl": "",
+    "title": "Haz que cada idea",
+    "highlightWord": "brille",
+    "subtitle": "Papelería premium, materiales de arte y detalles que inspiran tu creatividad.",
+    "ctaLabel": "Comprar por WhatsApp",
+    "ctaUrl": "https://wa.me/58000000000"
+  },
+  "links": [
+    { "label": "Inicio", "url": "index.html", "visible": true },
+    { "label": "Catálogo", "url": "catalogo.html", "visible": true },
+    { "label": "Escolar", "url": "escolar.html", "visible": true },
+    { "label": "Arte & Creatividad", "url": "arte-creatividad.html", "visible": true },
+    { "label": "Oficina", "url": "oficina.html", "visible": true },
+    { "label": "Regalos", "url": "regalos.html", "visible": true },
+    { "label": "Pataemingo Art Studio", "url": "pataemingo-art-studio.html", "visible": true },
+    { "label": "Pataemingo Inusual", "url":
