@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>Pataemingo — Papelería · Arte · Creatividad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EAD6;
+    --cream-2:#F0E1C4;
+    --banner:#FBE9C6;
+    --pink:#F0609C;
+    --pink-dark:#E0468A;
+    --pink-soft:#FCE4EF;
+    --mint:#DCEEE6;
+    --mint-2:#CDE6DA;
+    --blush:#FBE3EC;
+    --blush-2:#F7D3E3;
+    --sand:#FBEBD3;
+    --sand-2:#F5DDB3;
+    --ink:#2E2620;
+    --ink-soft:#6E655D;
+    --gray:#8B8378;
+    --line:#EDE4D6;
+  }
+  *{box-sizing:border-box;}
+  html{
+    color-scheme:light only;
+    background:var(--cream);
+    min-height:100%;
+  }
+  body{
+    color-scheme:light only;
+    margin:0;
+    min-height:100vh;
+    background-color:var(--cream);
+    color:var(--ink);
+    font-family:'Poppins', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;margin:0;padding:0;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px;}
+
+  /* Top banner */
+  .topbanner{
+    background:var(--banner);
+    text-align:center;
+    font-size:13px;
+    letter-spacing:.02em;
+    color:#7A5A22;
+    padding:9px 12px;
+    font-weight:500;
+  }
+  .topbanner span{margin:0 6px;}
+
+  /* Navbar */
+  .navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 32px 14px;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  .nav-icons{display:flex;align-items:center;gap:22px;}
+  .nav-icons a{display:flex;align-items:center;}
+  .nav-icons svg{width:20px;height:20px;stroke:var(--ink-soft);cursor:pointer;transition:stroke .15s;}
+  .nav-icons svg:hover{stroke:var(--pink);}
+  .cart-badge{position:relative;}
+  .cart-badge .count{
+    position:absolute;top:-8px;right:-9px;
+    background:var(--pink);color:#fff;
+    font-size:10px;font-weight:600;
+    width:16px;height:16px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .logo-block{text-align:center; display:block;}
+  .logo-block .logo-name{
+    font-size:26px;
+    font-weight:600;
+    letter-spacing:.04em;
+    background:linear-gradient(90deg,#F0609C,#F6A94A,#7BC69A,#5FA8D3);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    display:none;
+  }
+  .rainbow-wrap{display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .rainbow-arc{width:52px;height:26px;}
+  .logo-title{
+    font-family:'Fraunces', serif;
+    font-size:23px;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:.05em;
+    margin-top:2px;
+  }
+  .logo-sub{
+    font-size:10px;
+    letter-spacing:.18em;
+    color:var(--gray);
+    text-transform:uppercase;
+    margin-top:1px;
+  }
+
+  /* Category nav */
+  .catnav{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .catnav ul{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    padding:15px 32px;
+    max-width:1280px;
+    margin:0 auto;
+    flex-wrap:wrap;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+  .catnav li{
+    position:relative;
+    cursor:pointer;
+    padding:9px 17px;
+    border-radius:22px;
+    transition:background .25s ease, color .25s ease, transform .15s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .catnav li:hover{color:var(--ink); background:rgba(240,96,156,.08);}
+  .catnav li.active{
+    color:var(--pink-dark);
+    background:var(--pink-soft);
+    font-weight:600;
+    animation:chipPop .38s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes chipPop{
+    0%{transform:scale(.82);opacity:.4;}
+    55%{transform:scale(1.08);opacity:1;}
+    100%{transform:scale(1);}
+  }
+
+  /* Hero */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1.15fr;
+    gap:50px;
+    align-items:center;
+    padding:64px 32px 70px;
+    max-width:1280px;
+    margin:0 auto;
+    position:relative;
+  }
+  .hero-title{
+    font-size:56px;
+    line-height:1.08;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 22px;
+  }
+  .hero-title .brille{
+    background:linear-gradient(90deg,#F0609C,#F6A94A,#7BC69A,#5FA8D3);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-style:italic;
+    font-weight:500;
+  }
+  .hero-sub{
+    font-size:16.5px;
+    color:var(--ink-soft);
+    max-width:400px;
+    line-height:1.6;
+    margin-bottom:32px;
+  }
+  .btn-whatsapp{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--pink);
+    color:#fff;
+    padding:15px 30px;
+    border-radius:40px;
+    font-weight:600;
+    font-size:15px;
+    box-shadow:0 10px 24px rgba(240,96,156,.35);
+    border:none;
+    cursor:pointer;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(240,96,156,.45);}
+  .hero-social{
+    display:flex;align-items:center;gap:12px;
+    margin-top:34px;
+  }
+  .avatars{display:flex;}
+  .avatars .av{
+    width:34px;height:34px;border-radius:50%;
+    border:2.5px solid var(--cream);
+    margin-left:-10px;
+    background-size:cover;background-position:center;
+  }
+  .avatars .av:first-child{margin-left:0;}
+  .hero-social .txt{font-size:13.5px;color:var(--ink-soft);font-weight:500;}
+
+  .hero-visual{
+    position:relative;
+    border-radius:28px;
+    overflow:hidden;
+    background:linear-gradient(135deg,#EFE7DC,#E4DACB);
+    aspect-ratio:4/3.1;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    box-shadow:0 30px 60px -20px rgba(60,45,30,.25);
+  }
+  .hero-visual .scene{
+    position:relative;width:88%;height:82%;
+    display:flex;align-items:flex-end;justify-content:center;gap:18px;
+  }
+  .pen-cup{
+    width:110px;height:150px;
+    background:linear-gradient(180deg,#F3EEE2,#E9E1D0);
+    border-radius:14px 14px 30px 30px;
+    position:relative;
+    box-shadow:inset 0 -10px 20px rgba(0,0,0,.05);
+  }
+  .pen{
+    position:absolute;bottom:120px;width:6px;height:95px;border-radius:4px;
+    transform-origin:bottom center;
+  }
+  .notebook-stack{
+    width:150px;height:190px;
+    background:linear-gradient(160deg,#AEC9AE,#8FB48F);
+    border-radius:8px 14px 14px 8px;
+    position:relative;
+    box-shadow:0 20px 30px -10px rgba(60,80,50,.35);
+  }
+  .notebook-stack::before{
+    content:"";position:absolute;inset:14px 14px auto 14px;
+    height:2px;background:rgba(255,255,255,.5);
+    box-shadow:0 20px 0 rgba(255,255,255,.25), 0 40px 0 rgba(255,255,255,.15);
+  }
+  .marker-tray{
+    width:220px;height:110px;
+    background:linear-gradient(180deg,#FBF6EC,#F1E9D8);
+    border-radius:22px;
+    display:flex;align-items:flex-end;justify-content:center;gap:6px;
+    padding:14px 14px 0;
+    box-shadow:0 20px 30px -10px rgba(60,45,30,.2);
+  }
+  .marker{width:11px;height:78px;border-radius:5px 5px 3px 3px;}
+  .plant-deco{
+    position:absolute;top:-6%;right:2%;
+    width:70px;height:100px;
+  }
+  .float-wa{
+    position:absolute;
+    right:-14px;top:50%;
+    transform:translateY(-50%);
+    background:linear-gradient(180deg,#8FD19E,#67B77E);
+    color:#fff;
+    padding:16px 8px;
+    border-radius:14px;
+    font-size:11px;
+    writing-mode:vertical-rl;
+    display:flex;align-items:center;gap:8px;
+    box-shadow:0 12px 24px rgba(0,0,0,.15);
+    letter-spacing:.03em;
+  }
+
+  /* Category icons grid */
+  .catgrid{
+    max-width:1280px;margin:0 auto;
+    padding:10px 32px 60px;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:22px;
+  }
+  .catcard{text-align:center; position:relative;}
+  .catcard .circle{
+    width:100%;aspect-ratio:1/1;
+    border-radius:24px;
+    margin-bottom:14px;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    box-shadow:0 10px 25px -12px rgba(60,45,30,.25);
+    cursor:pointer;
+    position:relative;
+    transition:transform .22s ease, box-shadow .22s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .catcard:hover .circle{
+    transform:translateY(-5px);
+    box-shadow:0 16px 30px -12px rgba(60,45,30,.35);
+  }
+  .catcard .circle svg{transition:transform .3s ease;}
+  .catcard:hover .circle svg{transform:scale(1.1) rotate(-4deg);}
+  .catcard .circle.pop{
+    animation:circlePop .55s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes circlePop{
+    0%{transform:scale(1) rotate(0);}
+    30%{transform:scale(.9) rotate(0);}
+    55%{transform:scale(1.14) rotate(-4deg);}
+    75%{transform:scale(.96) rotate(3deg);}
+    100%{transform:scale(1) rotate(0);}
+  }
+  .circle-ripple{
+    position:absolute;
+    top:50%;left:50%;
+    width:12px;height:12px;
+    background:rgba(255,255,255,.6);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    animation:rippleGrow .6s ease-out forwards;
+    pointer-events:none;
+  }
+  @keyframes rippleGrow{
+    to{width:230%;height:230%;opacity:0;}
+  }
+  .burst-particle{
+    position:absolute;
+    top:50%;left:50%;
+    width:7px;height:7px;
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%) scale(1);
+    opacity:1;
+    animation:burstOut .65s cubic-bezier(.25,.8,.35,1) forwards;
+    z-index:6;
+  }
+  @keyframes burstOut{
+    to{
+      transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(.25);
+      opacity:0;
+    }
+  }
+  .catcard h4{
+    transition:color .25s ease;
+  }
+  .catcard.bump h4{
+    color:var(--pink);
+  }
+  .catcard h4{margin:0 0 3px;font-size:14.5px;font-weight:600;color:var(--ink);font-family:'Poppins',sans-serif;}
+  .catcard .link{font-size:12.5px;color:var(--gray);}
+  .catcard .link:hover{color:var(--pink);}
+
+  /* Brand cards */
+  .brandcards{
+    max-width:1280px;margin:0 auto;
+    padding:10px 32px 70px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .bcard{
+    border-radius:22px;
+    padding:34px 30px;
+    min-height:280px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;
+    overflow:hidden;
+  }
+  .bcard h3{font-size:26px;font-weight:600;margin:0 0 10px;line-height:1.2;}
+  .bcard p{font-size:14px;color:var(--ink-soft);margin:0 0 22px;max-width:220px;line-height:1.55;}
+  .bcard .link-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#fff;
+    padding:11px 20px;border-radius:30px;
+    font-size:13.5px;font-weight:600;
+    width:fit-content;
+    box-shadow:0 6px 16px rgba(0,0,0,.06);
+  }
+  .bcard .deco{
+    position:absolute;right:-10px;bottom:-10px;width:150px;height:150px;opacity:.95;
+  }
+
+  /* Products */
+  .products-section{
+    max-width:1280px;margin:0 auto;
+    padding:10px 32px 60px;
+  }
+  .products-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    margin-bottom:26px;
+  }
+  .products-head h2{font-size:27px;font-weight:600;margin:0 0 4px;}
+  .products-head .sub{font-size:14px;color:var(--gray);}
+  .arrow-nav{display:flex;gap:10px;}
+  .arrow-nav button{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line);
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+  }
+  .arrow-nav button svg{width:16px;height:16px;stroke:var(--ink-soft);}
+  .prod-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:20px;
+  }
+  .prod-card{cursor:pointer;}
+  .prod-thumb{
+    border-radius:16px;
+    aspect-ratio:1/1;
+    margin-bottom:12px;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .prod-thumb .heart{
+    position:absolute;top:10px;right:10px;
+    width:28px;height:28px;border-radius:50%;
+    background:rgba(255,255,255,.85);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .prod-thumb .heart svg{width:14px;height:14px;stroke:var(--pink);fill:none;transition:fill .2s ease, transform .15s ease;}
+  .prod-thumb .heart.liked svg{fill:var(--pink);transform:scale(1.1);}
+  .prod-card{cursor:pointer;}
+  .prod-card h5{font-size:13.5px;font-weight:500;margin:0 0 4px;line-height:1.35;color:var(--ink);}
+  .prod-card .price{font-size:14.5px;font-weight:700;color:var(--ink);}
+
+  /* Ink explosion overlay */
+  .ink-overlay{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    overflow:hidden;
+  }
+  .ink-blob{
+    position:absolute;
+    transform:translate(-50%,-50%) scale(0) rotate(0deg);
+    opacity:.95;
+    filter:blur(1px);
+    animation:inkBurst 1.05s cubic-bezier(.16,.84,.44,1) forwards;
+    mix-blend-mode:multiply;
+    will-change:transform, opacity;
+  }
+  @keyframes inkBurst{
+    0%{transform:translate(-50%,-50%) translate(0,0) scale(0) rotate(0deg); opacity:.95;}
+    32%{opacity:.9;}
+    100%{transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) scale(var(--scale)) rotate(var(--rot)); opacity:0;}
+  }
+
+  /* Category page: breadcrumb, hero, sub-modules */
+  .page[hidden]{display:none;}
+  .breadcrumb{
+    max-width:1280px;margin:0 auto;padding:26px 32px 0;
+    font-size:13px;color:var(--gray);display:flex;gap:8px;align-items:center;
+  }
+  .breadcrumb a{cursor:pointer;}
+  .breadcrumb a:hover{color:var(--pink-dark);}
+  .breadcrumb .sep{opacity:.5;}
+  .breadcrumb .current{color:var(--ink);font-weight:600;}
+  .cat-hero{
+    max-width:1280px;margin:0 auto;padding:28px 32px 46px;
+    display:flex;align-items:center;gap:28px;
+  }
+  .cat-hero .icon-wrap{
+    width:96px;height:96px;border-radius:28px;background:var(--blush);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 28px -12px rgba(60,45,30,.3);flex-shrink:0;
+  }
+  .cat-hero h1{font-size:42px;font-weight:600;margin:0 0 8px;}
+  .cat-hero p{font-size:15.5px;color:var(--ink-soft);margin:0;max-width:520px;line-height:1.6;}
+  .submods{
+    max-width:1280px;margin:0 auto;padding:10px 32px 60px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+  }
+  .submod{
+    border-radius:26px;padding:36px 30px;position:relative;overflow:hidden;cursor:pointer;
+    min-height:290px;display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .submod:hover{transform:translateY(-6px);box-shadow:0 22px 40px -18px rgba(60,45,30,.35);}
+  .submod .badge{
+    font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-soft);opacity:.75;margin-bottom:10px;
+  }
+  .submod h3{font-size:27px;font-weight:600;margin:0 0 10px;}
+  .submod p{font-size:13.5px;color:var(--ink-soft);margin:0 0 22px;max-width:220px;line-height:1.55;}
+  .submod .swatches{display:flex;gap:6px;margin-bottom:14px;}
+  .submod .swatches span{width:16px;height:16px;border-radius:50%;display:inline-block;box-shadow:0 2px 4px rgba(0,0,0,.12);}
+  .submod .deco{position:absolute;right:-16px;bottom:-16px;width:150px;height:150px;opacity:.95;}
+  .featured-head{max-width:1280px;margin:0 auto;padding:0 32px;}
+  .featured-head h2{font-size:25px;font-weight:600;margin:0 0 4px;}
+  .featured-head .sub{font-size:13.5px;color:var(--gray);margin-bottom:22px;}
+
+  /* Footer */
+  .footer-strip{
+    background:var(--cream-2);
+    border-top:1px solid var(--line);
+    padding:44px 32px;
+  }
+  .footer-grid{
+    max-width:1280px;margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:24px;
+    text-align:center;
+  }
+  .fitem{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .fitem .ic{
+    width:42px;height:42px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .fitem .ic svg{width:19px;height:19px;}
+  .fitem h6{margin:0;font-size:14px;font-weight:600;color:var(--ink);}
+  .fitem p{margin:0;font-size:12.5px;color:var(--gray);line-height:1.4;}
+
+  /* Responsive */
+  @media(max-width:1024px){
+    .hero{grid-template-columns:1fr;}
+    .hero-title{font-size:44px;}
+    .catgrid{grid-template-columns:repeat(3,1fr);}
+    .brandcards{grid-template-columns:1fr;}
+    .prod-grid{grid-template-columns:repeat(3,1fr);}
+    .footer-grid{grid-template-columns:repeat(2,1fr);}
+    .catnav ul{gap:22px;font-size:13.5px;}
+  }
+  @media(max-width:640px){
+    .navbar{padding:16px 18px;}
+    .wrap,.hero,.catgrid,.brandcards,.products-section,.footer-grid{padding-left:18px;padding-right:18px;}
+    .hero-title{font-size:34px;}
+    .catgrid{grid-template-columns:repeat(2,1fr);}
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .catnav ul{gap:14px 18px;font-size:12.5px;justify-content:flex-start;overflow-x:auto;}
+    .float-wa{display:none;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ink-overlay" id="inkOverlay"></div>
+
+  <!-- Top banner -->
+  <div class="topbanner">🚚 <span>Envíos a toda Venezuela todos los días</span> 🌈</div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-icons">
+      <a href="buscar.html" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a>
+    </div>
+
+    <a class="logo-block" href="index.html">
+      <div class="rainbow-wrap">
+        <svg class="rainbow-arc" viewBox="0 0 60 30" fill="none">
+          <path d="M2 30C2 15 15 2 30 2C45 2 58 15 58 30" stroke="#F0609C" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M8 30C8 17.8 18 8 30 8C42 8 52 17.8 52 30" stroke="#F6A94A" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M14 30C14 20.7 21.2 14 30 14C38.8 14 46 20.7 46 30" stroke="#7BC69A" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M20 30C20 23.6 24.5 20 30 20C35.5 20 40 23.6 40 30" stroke="#5FA8D3" stroke-width="3.4" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-title">PATAEMINGO</div>
+        <div class="logo-sub">Papelería · Arte · Creatividad</div>
+      </div>
+    </a>
+
+    <div class="nav-icons">
+      <a href="mi-cuenta.html" aria-label="Mi cuenta"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+      <a href="favoritos.html" aria-label="Favoritos"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></a>
+      <a href="carrito.html" class="cart-badge" aria-label="Carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="count">0</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Category nav -->
+  <div class="catnav">
+    <ul>
+      <li class="active" data-href="index.html">Inicio</li>
+      <li data-href="catalogo.html">Catálogo ▾</li>
+      <li data-href="escolar.html">Escolar</li>
+      <li data-href="arte-creatividad.html">Arte &amp; Creatividad</li>
+      <li data-href="oficina.html">Oficina</li>
+      <li data-href="regalos.html">Regalos</li>
+      <li data-href="pataemingo-art-studio.html">Pataemingo Art Studio</li>
+      <li data-href="pataemingo-inusual.html">Pataemingo Inusual</li>
+      <li data-href="nosotros.html">Nosotros</li>
+      <li data-href="contacto.html">Contacto</li>
+    </ul>
+  </div>
+
+  <main id="page-index" class="page">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1 class="hero-title">Haz que<br>cada idea<br><span class="brille">brille</span></h1>
+      <p class="hero-sub">Papelería premium, materiales de arte y detalles que inspiran tu creatividad.</p>
+      <button class="btn-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.2 15 3.8 13.5 3.8 12c0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/></svg>
+        Comprar por WhatsApp
+      </button>
+      <div class="hero-social">
+        <div class="avatars">
+          <div class="av" style="background:linear-gradient(135deg,#F0609C,#F6A94A);"></div>
+          <div class="av" style="background:linear-gradient(135deg,#7BC69A,#5FA8D3);"></div>
+          <div class="av" style="background:linear-gradient(135deg,#F6A94A,#7BC69A);"></div>
+        </div>
+        <span class="txt">+170k clientes felices 💗</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <svg class="plant-deco" viewBox="0 0 60 100" fill="none"><path d="M30 100C30 100 30 40 30 20" stroke="#6B8E5A" stroke-width="3"/><ellipse cx="18" cy="30" rx="14" ry="7" transform="rotate(-30 18 30)" fill="#7FA96B"/><ellipse cx="42" cy="25" rx="14" ry="7" transform="rotate(30 42 25)" fill="#8FBB78"/><ellipse cx="30" cy="15" rx="10" ry="6" fill="#6B8E5A"/></svg>
+      <div class="scene">
+        <div class="pen-cup">
+          <div class="pen" style="left:14px; background:#5FA8D3; transform:rotate(-8deg);"></div>
+          <div class="pen" style="left:32px; background:#F0609C; transform:rotate(-2deg);"></div>
+          <div class="pen" style="left:50px; background:#F6A94A; transform:rotate(4deg);"></div>
+          <div class="pen" style="left:68px; background:#7BC69A; transform:rotate(10deg);"></div>
+          <div class="pen" style="left:86px; background:#C08FD3; transform:rotate(16deg);"></div>
+        </div>
+        <div class="notebook-stack"></div>
+      </div>
+      <div style="position:absolute; bottom:6%; left:8%; width:60%;">
+        <div class="marker-tray">
+          <div class="marker" style="background:#F0609C;"></div>
+          <div class="marker" style="background:#F6A94A;"></div>
+          <div class="marker" style="background:#EBD35F;"></div>
+          <div class="marker" style="background:#7BC69A;"></div>
+          <div class="marker" style="background:#5FA8D3;"></div>
+          <div class="marker" style="background:#8B8FD3;"></div>
+          <div class="marker" style="background:#C08FD3;"></div>
+        </div>
+      </div>
+      <div class="float-wa">Chatea con nosotros 💬</div>
+    </div>
+  </section>
+
+  <!-- Category icons grid -->
+  <section class="catgrid">
+    <div class="catcard" data-href="catalogo-marcadores.html">
+      <div class="circle" style="background:var(--blush);">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#D64F86" stroke-width="1.6"><path d="M17 3l4 4L7 21l-5 1 1-5z"/></svg>
+      </div>
+      <h4>Marcadores</h4>
+      <a class="link" href="catalogo-marcadores.html">Ver todo →</a>
+    </div>
+    <div class="catcard" data-href="catalogo-cuadernos-agendas.html">
+      <div class="circle" style="background:var(--mint);">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#5C9678" stroke-width="1.6"><path d="M4 4h13a2 2 0 0 1 2 2v14H6a2 2 0 0 1-2-2z"/><path d="M8 4v16"/></svg>
+      </div>
+      <h4>Cuadernos &amp; Agendas</h4>
+      <a class="link" href="catalogo-cuadernos-agendas.html">Ver todo →</a>
+    </div>
+    <div class="catcard" data-href="catalogo-arte-creatividad.html">
+      <div class="circle" style="background:var(--sand);">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#B98A3D" stroke-width="1.6"><circle cx="13.5" cy="6.5" r=".5" fill="#B98A3D"/><path d="M12 2a10 10 0 1 0 10 10c0-1-1-1.5-2-1.5h-2a2 2 0 0 1-2-2 2 2 0 0 1 .5-1.3A2 2 0 0 0 15 4.5 2 2 0 0 0 12 2z"/></svg>
+      </div>
+      <h4>Arte &amp; Creatividad</h4>
+      <a class="link" href="catalogo-arte-creatividad.html">Ver todo →</a>
+    </div>
+    <div class="catcard" data-href="catalogo-escolar.html">
+      <div class="circle" style="background:var(--blush-2);">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#B14C7A" stroke-width="1.6"><path d="M6 4h12v16H6z"/><path d="M6 9h12M6 14h12"/></svg>
+      </div>
+      <h4>Escolar</h4>
+      <a class="link" href="catalogo-escolar.html">Ver todo →</a>
+    </div>
+    <div class="catcard" data-href="catalogo-oficina.html">
+      <div class="circle" style="background:#EDEDED;">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#7A7A7A" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg>
+      </div>
+      <h4>Oficina</h4>
+      <a class="link" href="catalogo-oficina.html">Ver todo →</a>
+    </div>
+    <div class="catcard" data-href="catalogo-regalos.html">
+      <div class="circle" style="background:var(--sand-2);">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#A87A2A" stroke-width="1.6"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7C9 7 7 5.5 7 3.8 7 2.8 7.8 2 8.8 2 10.6 2 12 4.5 12 7z"/><path d="M12 7c3 0 5-1.5 5-3.2 0-1-.8-1.8-1.8-1.8C13.4 2 12 4.5 12 7z"/></svg>
+      </div>
+      <h4>Regalos</h4>
+      <a class="link" href="catalogo-regalos.html">Ver todo →</a>
+    </div>
+  </section>
+
+  <!-- Brand cards -->
+  <section class="brandcards">
+    <div class="bcard" style="background:var(--mint);">
+      <div>
+        <h3>Pataemingo<br>Art Studio</h3>
+        <p>Un espacio para crear, aprender y divertirte.</p>
+      </div>
+      <a class="link-btn" href="pataemingo-art-studio.html">Conócelo aquí →</a>
+      <svg class="deco" viewBox="0 0 150 150" fill="none">
+        <path d="M75 20L20 130h110z" stroke="#8FA98F" stroke-width="3" fill="none"/>
+        <rect x="60" y="120" width="30" height="10" fill="#B08A5F"/>
+        <circle cx="75" cy="70" r="14" fill="#F0609C"/>
+        <path d="M60 70a15 15 0 0 1 30 0" stroke="#fff" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="bcard" style="background:var(--blush);">
+      <div>
+        <h3 style="color:#B14C7A;">Pataemingo<br>Inusual</h3>
+        <p>Decoración, diseño y piezas únicas para tu hogar.</p>
+      </div>
+      <a class="link-btn" href="pataemingo-inusual.html">Descubrir más →</a>
+      <svg class="deco" viewBox="0 0 150 150" fill="none">
+        <ellipse cx="75" cy="120" rx="30" ry="10" fill="#D8B79A" opacity=".4"/>
+        <path d="M55 100c0-25 8-45 20-45s20 20 20 45z" fill="#E7DCC9"/>
+        <path d="M75 55c-10 0-20-15-15-28 8 3 12 12 15 20 3-8 7-17 15-20 5 13-5 28-15 28z" fill="#7FA96B"/>
+      </svg>
+    </div>
+    <div class="bcard" style="background:var(--sand);">
+      <div>
+        <h3>Envíos a<br>toda Venezuela</h3>
+        <p>Todos los días salen paquetes llenos de creatividad para ti.</p>
+      </div>
+      <a class="link-btn" href="envios-venezuela.html">Más información →</a>
+      <svg class="deco" viewBox="0 0 150 150" fill="none">
+        <rect x="35" y="70" width="70" height="55" fill="#D9A15A"/>
+        <path d="M35 70l35-20 35 20" stroke="#B57F3C" stroke-width="3" fill="none"/>
+        <path d="M70 50v75" stroke="#B57F3C" stroke-width="2"/>
+        <path d="M45 95h20l-6 12h-8z" fill="#F0609C" opacity=".8"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products-section">
+    <div class="products-head">
+      <div>
+        <h2>Lo más amado 💗</h2>
+        <div class="sub">Los favoritos de nuestra comunidad</div>
+      </div>
+      <div class="arrow-nav">
+        <button><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="prod-grid" id="prodGrid"></div>
+  </section>
+
+  </main>
+
+  <!-- ===================== MARCADORES CATEGORY PAGE ===================== -->
+  <main id="page-marcadores" class="page" hidden>
+
+    <div class="breadcrumb">
+      <a data-href="index.html">Inicio</a>
+      <span class="sep">/</span>
+      <a data-href="catalogo.html">Catálogo</a>
+      <span class="sep">/</span>
+      <span class="current">Marcadores</span>
+    </div>
+
+    <section class="cat-hero">
+      <div class="icon-wrap">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#D64F86" stroke-width="1.6"><path d="M17 3l4 4L7 21l-5 1 1-5z"/></svg>
+      </div>
+      <div>
+        <h1>Marcadores</h1>
+        <p>Colores vibrantes y trazos precisos para cada idea. Elige entre acrílicos, acuarela o permanentes según el proyecto que tengas en mente.</p>
+      </div>
+    </section>
+
+    <section class="submods">
+      <div class="submod" style="background:var(--blush);" data-href="marcadores-acrilicos.html">
+        <div>
+          <div class="badge">Marcadores</div>
+          <h3>Acrílicos</h3>
+          <div class="swatches">
+            <span style="background:#F0609C;"></span><span style="background:#F6A94A;"></span><span style="background:#5FA8D3;"></span><span style="background:#7BC69A;"></span>
+          </div>
+          <p>Cobertura opaca y brillante, ideales para superficies no porosas como vidrio, cerámica y piedra.</p>
+        </div>
+        <a class="link-btn" data-href="marcadores-acrilicos.html">Ver productos →</a>
+        <svg class="deco" viewBox="0 0 150 150" fill="none">
+          <path d="M40 130l60-90 15 10-60 90z" fill="#F0609C" opacity=".85"/>
+          <path d="M40 130l10-20 20 12z" fill="#B14C7A"/>
+        </svg>
+      </div>
+
+      <div class="submod" style="background:var(--mint);" data-href="marcadores-acuarela.html">
+        <div>
+          <div class="badge">Marcadores</div>
+          <h3>Acuarela</h3>
+          <div class="swatches">
+            <span style="background:#5FA8D3;"></span><span style="background:#7BC69A;"></span><span style="background:#C08FD3;"></span><span style="background:#F6A94A;"></span>
+          </div>
+          <p>Puntas suaves de doble uso que se difuminan con agua para efectos de pintura translúcidos.</p>
+        </div>
+        <a class="link-btn" data-href="marcadores-acuarela.html">Ver productos →</a>
+        <svg class="deco" viewBox="0 0 150 150" fill="none">
+          <circle cx="70" cy="90" r="45" fill="#5FA8D3" opacity=".35"/>
+          <circle cx="95" cy="70" r="30" fill="#7BC69A" opacity=".4"/>
+        </svg>
+      </div>
+
+      <div class="submod" style="background:var(--sand);" data-href="marcadores-permanentes.html">
+        <div>
+          <div class="badge">Marcadores</div>
+          <h3>Permanentes</h3>
+          <div class="swatches">
+            <span style="background:#2E2620;"></span><span style="background:#E0468A;"></span><span style="background:#5FA8D3;"></span><span style="background:#7BC69A;"></span>
+          </div>
+          <p>Tinta resistente al agua para escritura duradera en casi cualquier superficie.</p>
+        </div>
+        <a class="link-btn" data-href="marcadores-permanentes.html">Ver productos →</a>
+        <svg class="deco" viewBox="0 0 150 150" fill="none">
+          <rect x="55" y="30" width="14" height="90" rx="5" fill="#2E2620" opacity=".85" transform="rotate(18 62 75)"/>
+          <rect x="52" y="30" width="20" height="16" rx="4" fill="#B98A3D" transform="rotate(18 62 75)"/>
+        </svg>
+      </div>
+    </section>
+
+    <div class="featured-head">
+      <h2>Destacados en Marcadores</h2>
+      <div class="sub">Los favoritos de nuestra comunidad en esta categoría</div>
+    </div>
+    <div class="prod-grid" id="prodGridMarcadores"></div>
+
+  </main>
+
+  <!-- ===================== CUADERNOS & AGENDAS CATEGORY PAGE ===================== -->
+  <main id="page-cuadernos" class="page" hidden>
+
+    <div class="breadcrumb">
+      <a data-href="index.html">Inicio</a>
+      <span class="sep">/</span>
+      <a data-href="catalogo.html">Catálogo</a>
+      <span class="sep">/</span>
+      <span class="current">Cuadernos &amp; Agendas</span>
+    </div>
+
+    <section class="cat-hero">
+      <div class="icon-wrap" style="background:var(--mint);">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#5C9678" stroke-width="1.6"><path d="M4 4h13a2 2 0 0 1 2 2v14H6a2 2 0 0 1-2-2z"/><path d="M8 4v16"/></svg>
+      </div>
+      <div>
+        <h1>Cuadernos &amp; Agendas</h1>
+        <p>Encuentra el cuaderno perfecto para cada proyecto. Personalízalo eligiendo el tipo de encuadernación y de hoja que más se ajuste a tu forma de escribir.</p>
+      </div>
+    </section>
+
+    <section class="customization-grid">
+      <div class="module-card" style="background:var(--mint);">
+        <div class="badge">Personaliza</div>
+        <h3>Tipo de Encuadernación</h3>
+        <p>Elige cómo quieres que se mantengan unidas las hojas de tu cuaderno.</p>
+        <div class="option-pills" data-group="encuadernacion">
+          <button class="option-pill" data-value="argollado">Argollado</button>
+          <button class="option-pill" data-value="cosido">Cosido</button>
+          <button class="option-pill" data-value="pasta-dura">Pasta dura</button>
+        </div>
+      </div>
+
+      <div class="module-card" style="background:var(--blush);">
+        <div class="badge">Personaliza</div>
+        <h3>Tipo de Hoja</h3>
+        <p>Selecciona el formato de hoja según el uso que le darás.</p>
+        <div class="option-pills" data-group="hoja">
+          <button class="option-pill" data-value="rayada">Rayada</button>
+          <button class="option-pill" data-value="cuadriculada">Cuadriculada</button>
+          <button class="option-pill" data-value="blanca">Blanca</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="featured-head">
+      <h2>Destacados en Cuadernos &amp; Agendas</h2>
+      <div class="sub">Los favoritos de nuestra comunidad en esta categoría</div>
+    </div>
+    <div class="prod-grid" id="prodGridCuadernos"></div>
+
+  </main>
+
+  <!-- Footer strip -->
+  <div class="footer-strip">
+    <div class="footer-grid">
+      <div class="fitem">
+        <div class="ic" style="background:var(--blush);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D64F86" stroke-width="1.8"><rect x="1" y="6" width="15" height="12"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/></svg>
+        </div>
+        <h6>Envíos nacionales</h6>
+        <p>Llegamos a toda Venezuela</p>
+      </div>
+      <div class="fitem">
+        <div class="ic" style="background:var(--mint);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5C9678" stroke-width="1.8"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 9h20"/><path d="M6 14h4"/></svg>
+        </div>
+        <h6>Pago seguro</h6>
+        <p>Transferencias y pagos protegidos</p>
+      </div>
+      <div class="fitem">
+        <div class="ic" style="background:#DFF2E4;">
+          <svg viewBox="0 0 24 24" fill="#4FAE6A"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        </div>
+        <h6>Compra fácil</h6>
+        <p>Haz tu pedido por WhatsApp</p>
+      </div>
+      <div class="fitem">
+        <div class="ic" style="background:var(--sand);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B98A3D" stroke-width="1.8"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </div>
+        <h6>Productos originales</h6>
+        <p>Trabajamos con las mejores marcas</p>
+      </div>
+      <div class="fitem">
+        <div class="ic" style="background:var(--blush-2);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B14C7A" stroke-width="1.8"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <h6>Inspiración diaria</h6>
+        <p>Ideas, tips y mucho más en nuestro blog</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ---- Lightweight in-page router ----
+  // Pages that are fully built live inside this same file and switch instantly.
+  // Anything not in this map falls back to a real navigation (for when the
+  // rest of the site's pages are hosted alongside this one).
+  const pageMap = {
+    'index.html': 'page-index',
+    'catalogo-marcadores.html': 'page-marcadores'
+  };
+
+  function goTo(destination){
+    if (!destination) return;
+    const targetId = pageMap[destination];
+    if (targetId) {
+      document.querySelectorAll('.page').forEach(p => { p.hidden = true; });
+      document.getElementById(targetId).hidden = false;
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    } else {
+      window.location.href = destination;
+    }
+  }
+
+  const products = [
+    {name:"Marcadores Acrílicos Kalour 120 pcs", price:"$36.00", bg:"linear-gradient(135deg,#2B2B2B,#454545)", icon:"marker", slug:"producto-marcadores-kalour-120.html"},
+    {name:"Estuche Faber-Castell 120 colores", price:"$68.50", bg:"linear-gradient(135deg,#1F1F1F,#3A3A3A)", icon:"pencil", slug:"producto-faber-castell-120.html"},
+    {name:"Cuaderno Kiut Flower Power A5", price:"$6.20", bg:"linear-gradient(135deg,#FBEFE0,#F3DCC0)", icon:"book", slug:"producto-cuaderno-kiut-flower-power.html"},
+    {name:"Resaltadores Pastel Stabilo Boss (6 unidades)", price:"$9.80", bg:"linear-gradient(135deg,#E9E2D5,#D9CFBB)", icon:"highlighters", slug:"producto-resaltadores-stabilo-boss.html"},
+    {name:"Bolígrafos Color Gel 0.7 mm (36 unidades)", price:"$9.50", bg:"linear-gradient(135deg,#F3EFE8,#E6DFD1)", icon:"pens", slug:"producto-boligrafos-gel-07mm.html"},
+    {name:"Agenda Kiut 2026 Semanal", price:"$18.90", bg:"linear-gradient(135deg,#FBEFE0,#F5DEC2)", icon:"agenda", slug:"producto-agenda-kiut-2026.html"}
+  ];
+
+  const iconSvg = {
+    marker:`<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#F0609C" stroke-width="1.5"><path d="M17 3l4 4L7 21l-5 1 1-5z"/></svg>`,
+    pencil:`<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#F6A94A" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/></svg>`,
+    book:`<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#B98A3D" stroke-width="1.5"><path d="M4 4h13a2 2 0 0 1 2 2v14H6a2 2 0 0 1-2-2z"/><path d="M8 4v16"/></svg>`,
+    highlighters:`<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#5C9678" stroke-width="1.5"><rect x="4" y="4" width="4" height="16" rx="1"/><rect x="10" y="4" width="4" height="16" rx="1"/><rect x="16" y="4" width="4" height="16" rx="1"/></svg>`,
+    pens:`<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#5FA8D3" stroke-width="1.5"><path d="M17 3l4 4L7 21l-5 1 1-5z"/></svg>`,
+    agenda:`<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#B14C7A" stroke-width="1.5"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 9h16"/></svg>`
+  };
+
+  // Ink-splash screen explosion when clicking the brand card links
+  const inkOverlay = document.getElementById('inkOverlay');
+  const inkColors = [
+    'rgba(240,96,156,.55)',
+    'rgba(224,70,138,.5)',
+    'rgba(246,169,74,.5)',
+    'rgba(123,198,154,.5)',
+    'rgba(95,168,211,.5)',
+    'rgba(192,143,211,.5)',
+    'rgba(235,211,95,.5)'
+  ];
+
+  function randomBlobRadius(){
+    const r = () => (40 + Math.random() * 30).toFixed(0);
+    return `${r()}% ${100 - r()}% ${r()}% ${100 - r()}% / ${r()}% ${r()}% ${100 - r()}% ${100 - r()}%`;
+  }
+
+  function inkExplosion(x, y){
+    const totalBlobs = 11;
+    for(let i = 0; i < totalBlobs; i++){
+      const blob = document.createElement('div');
+      blob.className = 'ink-blob';
+
+      const size = 200 + Math.random() * 280;
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 60 + Math.random() * 260;
+      const dx = Math.cos(angle) * dist;
+      const dy = Math.sin(angle) * dist;
+      const scale = 2.4 + Math.random() * 2.8;
+      const rot = (Math.random() * 70 - 35) + 'deg';
+      const delay = Math.random() * 130;
+
+      blob.style.left = x + 'px';
+      blob.style.top = y + 'px';
+      blob.style.width = size + 'px';
+      blob.style.height = size + 'px';
+      blob.style.background = inkColors[i % inkColors.length];
+      blob.style.borderRadius = randomBlobRadius();
+      blob.style.setProperty('--dx', dx.toFixed(1) + 'px');
+      blob.style.setProperty('--dy', dy.toFixed(1) + 'px');
+      blob.style.setProperty('--scale', scale.toFixed(2));
+      blob.style.setProperty('--rot', rot);
+      blob.style.animationDelay = delay.toFixed(0) + 'ms';
+
+      inkOverlay.appendChild(blob);
+      blob.addEventListener('animationend', () => blob.remove());
+    }
+  }
+
+  document.querySelectorAll('.bcard .link-btn').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const destination = link.getAttribute('href');
+      inkExplosion(e.clientX, e.clientY);
+      setTimeout(() => { goTo(destination); }, 550);
+    });
+  });
+
+  // Category nav: pink rounded-pill highlight on click (single selection), then navigate
+  document.querySelectorAll('.catnav li').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.catnav li').forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+      const destination = item.dataset.href;
+      if (destination) {
+        setTimeout(() => { goTo(destination); }, 320);
+      }
+    });
+  });
+
+  // Interactive click animations for the category icon cards
+  const burstColors = ['#F0609C','#F6A94A','#7BC69A','#5FA8D3','#C08FD3','#EBD35F','#E0468A'];
+
+  document.querySelectorAll('.catgrid .catcard').forEach(card => {
+    const circle = card.querySelector('.circle');
+    const destination = card.dataset.href;
+
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // bounce pop
+      circle.classList.remove('pop');
+      void circle.offsetWidth; // force reflow so animation can restart
+      circle.classList.add('pop');
+
+      // label color bump
+      card.classList.add('bump');
+      setTimeout(() => card.classList.remove('bump'), 500);
+
+      // ripple inside the circle
+      const ripple = document.createElement('span');
+      ripple.className = 'circle-ripple';
+      circle.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+
+      // confetti-style particle burst escaping the circle
+      const total = 10;
+      for (let i = 0; i < total; i++) {
+        const angle = (Math.PI * 2 * i) / total + (Math.random() * 0.4 - 0.2);
+        const dist = 50 + Math.random() * 35;
+        const tx = Math.cos(angle) * dist;
+        const ty = Math.sin(angle) * dist;
+
+        const particle = document.createElement('span');
+        particle.className = 'burst-particle';
+        particle.style.setProperty('--tx', tx.toFixed(1) + 'px');
+        particle.style.setProperty('--ty', ty.toFixed(1) + 'px');
+        particle.style.background = burstColors[Math.floor(Math.random() * burstColors.length)];
+        card.appendChild(particle);
+        particle.addEventListener('animationend', () => particle.remove());
+      }
+
+      if (destination) {
+        setTimeout(() => {
+          const rect = card.getBoundingClientRect();
+          const originX = rect.left + rect.width / 2;
+          const originY = rect.top + rect.height / 2;
+          const targetX = window.innerWidth - 46;
+          const targetY = 46;
+          const dx = targetX - originX;
+          const dy = targetY - originY;
+
+          card.style.position = 'relative';
+          card.style.zIndex = '999';
+          card.style.transition = 'transform .55s cubic-bezier(.5,0,.4,1), opacity .55s ease .1s';
+          card.style.willChange = 'transform, opacity';
+          // force reflow before applying the transform so the transition runs
+          void card.offsetWidth;
+          card.style.transform = `translate(${dx}px, ${dy}px) scale(0.1)`;
+          card.style.opacity = '0.2';
+
+          setTimeout(() => { goTo(destination); }, 580);
+        }, 160);
+      }
+    });
+  });
+
+  const grid = document.getElementById('prodGrid');
+  products.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'prod-card';
+    card.innerHTML = `
+      <div class="prod-thumb" style="background:${p.bg};">
+        ${iconSvg[p.icon]}
+        <div class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </div>
+      </div>
+      <h5>${p.name}</h5>
+      <div class="price">${p.price}</div>
+    `;
+    card.addEventListener('click', () => {
+      goTo(p.slug);
+    });
+    card.querySelector('.heart').addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.currentTarget.classList.toggle('liked');
+    });
+    grid.appendChild(card);
+  });
+
+  // ---- Marcadores page wiring ----
+
+  // Breadcrumb links use the same in-page router
+  document.querySelectorAll('#page-marcadores .breadcrumb a[data-href]').forEach(link => {
+    link.addEventListener('click', () => goTo(link.dataset.href));
+  });
+
+  // Sub-category modules (Acrílicos / Acuarela / Permanentes): fly to the
+  // top-right corner and shrink, same language as the homepage modules
+  document.querySelectorAll('#page-marcadores .submod').forEach(mod => {
+    const destination = mod.dataset.href;
+    const trigger = (e) => {
+      e.preventDefault();
+      const rect = mod.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+      const targetX = window.innerWidth - 46;
+      const targetY = 46;
+      const dx = targetX - originX;
+      const dy = targetY - originY;
+
+      mod.style.position = 'relative';
+      mod.style.zIndex = '999';
+      mod.style.transition = 'transform .55s cubic-bezier(.5,0,.4,1), opacity .55s ease .1s';
+      void mod.offsetWidth;
+      mod.style.transform = `translate(${dx}px, ${dy}px) scale(0.1)`;
+      mod.style.opacity = '0.2';
+
+      setTimeout(() => { goTo(destination); }, 580);
+    };
+    mod.addEventListener('click', trigger);
+    const btn = mod.querySelector('.link-btn');
+    if (btn) btn.addEventListener('click', (e) => { e.stopPropagation(); trigger(e); });
+  });
+
+  // Featured products for the Marcadores page
+  const marcadoresProducts = [
+    {name:"Marcadores Acrílicos Kalour 120 pcs", price:"$36.00", bg:"linear-gradient(135deg,#2B2B2B,#454545)", slug:"producto-marcadores-kalour-120.html"},
+    {name:"Set Acuarela Dual Tip 48 colores", price:"$24.00", bg:"linear-gradient(135deg,#DCEEE6,#CDE6DA)", slug:"producto-acuarela-dual-tip-48.html"},
+    {name:"Permanentes Punta Fina x12", price:"$14.50", bg:"linear-gradient(135deg,#2E2620,#4A3F35)", slug:"producto-permanentes-punta-fina-12.html"},
+    {name:"Marcadores Pastel Brush Pen x24", price:"$19.90", bg:"linear-gradient(135deg,#FBE3EC,#F7D3E3)", slug:"producto-brush-pen-pastel-24.html"}
+  ];
+
+  const gridMarcadores = document.getElementById('prodGridMarcadores');
+  marcadoresProducts.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'prod-card';
+    card.innerHTML = `
+      <div class="prod-thumb" style="background:${p.bg};">
+        ${iconSvg.marker}
+        <div class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </div>
+      </div>
+      <h5>${p.name}</h5>
+      <div class="price">${p.price}</div>
+    `;
+    card.addEventListener('click', () => { goTo(p.slug); });
+    card.querySelector('.heart').addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.currentTarget.classList.toggle('liked');
+    });
+    gridMarcadores.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
