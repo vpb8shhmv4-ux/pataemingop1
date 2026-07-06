@@ -1,1 +1,65 @@
+backend:
+  name: git-gateway
+  branch: main   # cambia esto si tu rama principal se llama "master"
 
+# Dónde se guardan las imágenes que subas desde el panel, y con qué ruta
+# se referencian desde el HTML (deben coincidir con dónde vive tu sitio).
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Mientras editas, Decap muestra una vista previa a la derecha. Sin esto
+# igual funciona, solo que sin la vista previa en vivo.
+publish_mode: simple
+
+collections:
+  # -----------------------------------------------------------------------
+  # Colección de tipo "file": un único archivo (content/site.json) con
+  # TODO el contenido editable del home. Es la forma más simple de empezar
+  # cuando el sitio es una sola página — no hace falta una carpeta por
+  # cada pieza de contenido.
+  # -----------------------------------------------------------------------
+  - name: "settings"
+    label: "Contenido del sitio"
+    files:
+      - file: "content/site.json"
+        label: "Página de inicio"
+        name: "home"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Imagen de fondo", name: "imageUrl", widget: "image", required: false }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Palabra destacada (degradé rosa)", name: "highlightWord", widget: "string" }
+              - { label: "Subtítulo", name: "subtitle", widget: "text" }
+              - { label: "Texto del botón", name: "ctaLabel", widget: "string" }
+              - { label: "Enlace del botón (ej: WhatsApp)", name: "ctaUrl", widget: "string" }
+
+          - label: "Enlaces del menú"
+            name: "links"
+            widget: "list"
+            summary: "{{fields.label}} → {{fields.url}}"
+            fields:
+              - { label: "Texto visible", name: "label", widget: "string" }
+              - { label: "Enlace (URL o ruta)", name: "url", widget: "string" }
+              - { label: "Visible en el menú", name: "visible", widget: "boolean", default: true }
+
+          - label: "Productos destacados (Lo más amado)"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.price}}"
+            fields:
+              - { label: "Nombre", name: "name", widget: "string" }
+              - { label: "Precio", name: "price", widget: "string" }
+              - { label: "Foto del producto", name: "imageUrl", widget: "image", required: false }
+              - { label: "Enlace del producto", name: "url", widget: "string", required: false }
+
+          - label: "Módulos de categoría"
+            name: "categoryModules"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Nombre de la categoría", name: "title", widget: "string" }
+              - { label: "Enlace (Ver todo)", name: "url", widget: "string" }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
