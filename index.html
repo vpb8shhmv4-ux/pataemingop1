@@ -237,6 +237,17 @@
   .aitem button:hover{background:rgba(0,0,0,.06);}
   .aitem.off{opacity:.5;}
 
+  /* Pestañas del panel */
+  .tabs{display:flex;gap:4px;padding:0 22px;border-bottom:1px solid var(--line);background:#FDFAF4;}
+  .tabs button{
+    background:none;border:none;padding:12px 14px;font-size:13px;font-weight:500;
+    color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;
+  }
+  .tabs button.active{color:var(--pink-dark);border-bottom-color:var(--pink);font-weight:600;}
+  .tabpane[hidden]{display:none;}
+  .hint{font-size:11.5px;color:var(--gray);line-height:1.5;margin:0 0 14px;}
+  .circ-prev{width:44px;height:44px;border-radius:12px;object-fit:cover;flex-shrink:0;background:var(--blush);}
+
   .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:26px;font-size:13px;z-index:130;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:90vw;text-align:center;}
   .toast.show{opacity:1;transform:translate(-50%,0);}
   .wafloat{position:fixed;right:18px;bottom:18px;z-index:45;width:54px;height:54px;border-radius:50%;background:#4FAE6A;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px -10px rgba(79,174,106,.9);cursor:pointer;transition:transform .2s;}
@@ -454,7 +465,16 @@
     <div><h2>Panel Administrativo</h2><div class="sub" id="admWho">—</div></div>
     <button class="xbtn" id="admClose" aria-label="Cerrar">✕</button>
   </div>
+  <div class="tabs">
+    <button class="active" data-tab="prod">Productos</button>
+    <button data-tab="cat">Categorías</button>
+    <button data-tab="sub">Subcategorías</button>
+  </div>
+
   <div class="dbody">
+
+    <!-- ===== PESTAÑA: PRODUCTOS ===== -->
+    <div class="tabpane" id="paneProd">
     <div class="sec">
       <p class="lbl" id="formLbl">Nuevo producto</p>
       <label class="fld">Nombre del artículo<input type="text" id="aName" placeholder="Ej: Marcador acrílico dorado"></label>
@@ -485,6 +505,65 @@
         <button id="aPrev">←</button><span class="info" id="aPageInfo"></span><button id="aNext">→</button>
       </div>
     </div>
+    </div><!-- /paneProd -->
+
+    <!-- ===== PESTAÑA: CATEGORÍAS ===== -->
+    <div class="tabpane" id="paneCat" hidden>
+      <div class="sec">
+        <p class="lbl" id="cFormLbl">Nueva categoría</p>
+        <p class="hint">Las categorías son los círculos grandes del inicio y las pestañas del menú superior.</p>
+        <label class="fld">Nombre<input type="text" id="cName" placeholder="Ej: Escritura"></label>
+        <label class="fld">Descripción<textarea id="cDesc" rows="2" placeholder="Se muestra al abrir la categoría"></textarea></label>
+        <div class="row2">
+          <label class="fld">Posición en el menú<input type="number" id="cOrden" min="0" placeholder="1"></label>
+          <label class="fld chk" style="align-self:end;padding-bottom:12px"><input type="checkbox" id="cVisible" checked style="width:auto"> Visible</label>
+        </div>
+        <div class="fld">Foto de portada (el círculo del inicio)
+          <div class="drop" id="cDrop">📷 Haz clic para elegir una imagen</div>
+          <input type="file" id="cFile" accept="image/*" style="display:none">
+          <input type="text" id="cImgUrl" placeholder="…o pega una URL" style="margin-top:8px">
+          <div class="prev" id="cPrev"><img id="cPrevImg" alt=""><button type="button" id="cClearImg">Quitar</button></div>
+        </div>
+        <div class="btns">
+          <button class="b-primary" id="cSave">Guardar categoría</button>
+          <button class="b-ghost" id="cCancel" style="display:none">Cancelar</button>
+        </div>
+      </div>
+      <div class="sec">
+        <p class="lbl">Categorías existentes</p>
+        <div id="clist"></div>
+      </div>
+    </div><!-- /paneCat -->
+
+    <!-- ===== PESTAÑA: SUBCATEGORÍAS ===== -->
+    <div class="tabpane" id="paneSub" hidden>
+      <div class="sec">
+        <p class="lbl" id="sFormLbl">Nueva subcategoría</p>
+        <p class="hint">Son los chips que aparecen al abrir una categoría.</p>
+        <label class="fld">Pertenece a la categoría<select id="sCat"></select></label>
+        <label class="fld">Nombre<input type="text" id="sName" placeholder="Ej: Bolígrafos"></label>
+        <div class="row2">
+          <label class="fld">Posición<input type="number" id="sOrden" min="0" placeholder="1"></label>
+          <label class="fld chk" style="align-self:end;padding-bottom:12px"><input type="checkbox" id="sVisible" checked style="width:auto"> Visible</label>
+        </div>
+        <div class="fld">Foto de portada (opcional)
+          <div class="drop" id="sDrop">📷 Haz clic para elegir una imagen</div>
+          <input type="file" id="sFile" accept="image/*" style="display:none">
+          <input type="text" id="sImgUrl" placeholder="…o pega una URL" style="margin-top:8px">
+          <div class="prev" id="sPrev"><img id="sPrevImg" alt=""><button type="button" id="sClearImg">Quitar</button></div>
+        </div>
+        <div class="btns">
+          <button class="b-primary" id="sSave">Guardar subcategoría</button>
+          <button class="b-ghost" id="sCancel" style="display:none">Cancelar</button>
+        </div>
+      </div>
+      <div class="sec">
+        <p class="lbl">Subcategorías existentes</p>
+        <label class="fld">Filtrar por categoría<select id="sFilter"></select></label>
+        <div id="slist"></div>
+      </div>
+    </div><!-- /paneSub -->
+
   </div>
   <div class="dfoot">
     <div class="btns"><button class="b-ghost" id="aLogout">Cerrar sesión</button></div>
@@ -639,9 +718,12 @@ function renderCatGrid(){
     const st = CAT_STYLE[i % CAT_STYLE.length];
     const d = document.createElement('div');
     d.className = 'catcard';
+    // Si la categoría tiene foto de portada la usamos; si no, el ícono de color.
+    const interior = c.foto_url
+      ? '<img src="' + esc(c.foto_url) + '" alt="' + esc(c.nombre) + '" style="width:100%;height:100%;object-fit:cover" loading="lazy">'
+      : '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="' + st.stroke + '" stroke-width="1.6">' + ICON + '</svg>';
     d.innerHTML =
-      '<div class="circle" style="background:' + st.bg + '">' +
-      '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="' + st.stroke + '" stroke-width="1.6">' + ICON + '</svg></div>' +
+      '<div class="circle" style="background:' + (c.foto_url ? 'transparent' : st.bg) + '">' + interior + '</div>' +
       '<h4>' + esc(c.nombre) + '</h4><span class="lk">Ver todo →</span>';
     d.onclick = () => showCatalog(c.slug);
     wrap.appendChild(d);
@@ -1047,6 +1129,290 @@ async function deleteProduct(p){
   } catch (err){ toast('Error: ' + errMsg(err)); }
 }
 
+/* ---- Pestañas del panel ---- */
+document.querySelectorAll('.tabs button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('.tabs button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    const t = b.dataset.tab;
+    $('paneProd').hidden = t !== 'prod';
+    $('paneCat').hidden  = t !== 'cat';
+    $('paneSub').hidden  = t !== 'sub';
+    if (t === 'cat') renderCatList();
+    if (t === 'sub'){ fillSubTabSelects(); renderSubList(); }
+  };
+});
+
+/* ---- Selector de imagen reutilizable ----
+   Conecta un recuadro + input de archivo + campo de URL + vista previa.
+   Devuelve un objeto con .get() para leer lo que el usuario eligió. */
+function crearSelectorImagen(dropId, fileId, urlId, prevId, prevImgId, clearId){
+  let pendingFile = null, pendingUrl = '';
+  const mostrar = (src) => {
+    pendingUrl = src;
+    if (src){ $(prevImgId).src = src; $(prevId).style.display = 'flex'; }
+    else $(prevId).style.display = 'none';
+  };
+  $(dropId).onclick = () => $(fileId).click();
+  $(fileId).onchange = (e) => {
+    const f = e.target.files && e.target.files[0]; if (!f) return;
+    pendingFile = f; $(urlId).value = '';
+    const r = new FileReader(); r.onload = ev => mostrar(ev.target.result); r.readAsDataURL(f);
+  };
+  $(urlId).oninput = (e) => { const v = e.target.value.trim(); pendingFile = null; if (v) mostrar(v); };
+  $(clearId).onclick = () => { pendingFile = null; $(urlId).value=''; $(fileId).value=''; mostrar(''); };
+  return {
+    reset(){ pendingFile = null; $(urlId).value = ''; $(fileId).value = ''; mostrar(''); },
+    cargar(url){ pendingFile = null; $(urlId).value = url || ''; mostrar(url || ''); },
+    tieneArchivo(){ return !!pendingFile; },
+    archivo(){ return pendingFile; },
+    // Resuelve la URL final: sube el archivo si hace falta
+    async resolver(){
+      if (pendingFile) return await uploadPhoto(pendingFile);
+      const escrita = $(urlId).value.trim();
+      if (escrita) return escrita;
+      if (pendingUrl && pendingUrl.indexOf('data:') !== 0) return pendingUrl;
+      return '';
+    }
+  };
+}
+
+/* =====================================================================
+   CATEGORÍAS — alta, edición y borrado
+   ===================================================================== */
+let cEditId = null;
+let selCatImg = null;
+
+async function refrescarTaxonomia(){
+  await loadTaxonomy();
+  renderCatnav();
+  renderCatGrid();
+  fillCatSelects();
+  fillSubTabSelects();
+  if (!$('viewCat').hidden){ renderSubnav(); updateHead(); }
+}
+
+function resetCatForm(){
+  cEditId = null;
+  $('cName').value = ''; $('cDesc').value = ''; $('cOrden').value = '';
+  $('cVisible').checked = true;
+  selCatImg.reset();
+  $('cSave').textContent = 'Guardar categoría';
+  $('cCancel').style.display = 'none';
+  $('cFormLbl').textContent = 'Nueva categoría';
+}
+
+function slugify(txt){
+  return String(txt).toLowerCase().normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')      // quita acentos
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'').slice(0,40);
+}
+
+async function saveCategoria(){
+  const nombre = $('cName').value.trim();
+  if (!nombre){ toast('Ponle un nombre a la categoría'); $('cName').focus(); return; }
+  const btn = $('cSave'); btn.textContent = 'Guardando…'; btn.disabled = true;
+  try {
+    const foto = await selCatImg.resolver();
+    const row = {
+      nombre: nombre,
+      descripcion: $('cDesc').value.trim() || null,
+      orden: parseInt($('cOrden').value, 10) || 0,
+      visible: $('cVisible').checked
+    };
+    if (foto) row.foto_url = foto;
+    if (!cEditId) row.slug = slugify(nombre);
+
+    const { error } = cEditId
+      ? await sb.from('categorias').update(row).eq('id', cEditId)
+      : await sb.from('categorias').insert(row);
+    if (error) throw error;
+
+    toast(cEditId ? 'Categoría actualizada' : 'Categoría creada');
+    resetCatForm();
+    await refrescarTaxonomia();
+    renderCatList();
+  } catch (err){
+    console.error(err);
+    const m = errMsg(err);
+    if (/duplicate key/i.test(m)) toast('Ya existe una categoría con ese nombre.');
+    else if (/row-level security/i.test(m)) toast('Sin permiso. Revisa las políticas RLS.');
+    else toast('Error: ' + m);
+  } finally { btn.textContent = 'Guardar categoría'; btn.disabled = false; }
+}
+
+function editCategoria(c){
+  cEditId = c.id;
+  $('cName').value = c.nombre || '';
+  $('cDesc').value = c.descripcion || '';
+  $('cOrden').value = c.orden != null ? c.orden : '';
+  $('cVisible').checked = c.visible !== false;
+  selCatImg.cargar(c.foto_url || '');
+  $('cSave').textContent = 'Guardar cambios';
+  $('cCancel').style.display = 'inline-block';
+  $('cFormLbl').textContent = 'Editando categoría';
+  $('cName').scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+async function deleteCategoria(c){
+  const subs = subcategorias.filter(s => s.categoria_id === c.id).length;
+  const aviso = subs
+    ? '"' + c.nombre + '" tiene ' + subs + ' subcategoría(s). Al borrarla se borran también, y los productos que hubiera dentro quedarán sin categoría.\n\n¿Continuar?'
+    : '¿Eliminar la categoría "' + c.nombre + '"?';
+  if (!confirm(aviso)) return;
+  try {
+    const { error } = await sb.from('categorias').delete().eq('id', c.id);
+    if (error) throw error;
+    toast('Categoría eliminada');
+    if (cEditId === c.id) resetCatForm();
+    await refrescarTaxonomia();
+    renderCatList();
+  } catch (err){ toast('Error: ' + errMsg(err)); }
+}
+
+function renderCatList(){
+  const wrap = $('clist');
+  wrap.innerHTML = '';
+  if (!categorias.length){ wrap.innerHTML = '<p class="hint">Todavía no hay categorías.</p>'; return; }
+  categorias.forEach(c => {
+    const n = subcategorias.filter(s => s.categoria_id === c.id).length;
+    const row = document.createElement('div');
+    row.className = 'aitem' + (c.visible === false ? ' off' : '');
+    const thumb = c.foto_url
+      ? '<img class="circ-prev" src="' + esc(c.foto_url) + '" alt="">'
+      : '<div class="ph">🎨</div>';
+    row.innerHTML = thumb +
+      '<div class="ai"><b>' + esc(c.nombre) + '</b>' +
+      '<span class="tag">Posición ' + (c.orden || 0) + ' · ' + n + ' subcategoría(s)' +
+      (c.visible === false ? ' · oculta' : '') + '</span></div>' +
+      '<button title="Editar">✏️</button><button title="Eliminar">🗑️</button>';
+    const bs = row.querySelectorAll('button');
+    bs[0].onclick = () => editCategoria(c);
+    bs[1].onclick = () => deleteCategoria(c);
+    wrap.appendChild(row);
+  });
+}
+
+/* =====================================================================
+   SUBCATEGORÍAS — alta, edición y borrado
+   ===================================================================== */
+let sEditId = null;
+let selSubImg = null;
+
+function fillSubTabSelects(){
+  const sel = $('sCat'), filt = $('sFilter');
+  const prevSel = sel.value, prevFilt = filt.value;
+  sel.innerHTML = ''; filt.innerHTML = '<option value="">Todas</option>';
+  categorias.forEach(c => {
+    const o1 = document.createElement('option'); o1.value = c.id; o1.textContent = c.nombre; sel.appendChild(o1);
+    const o2 = document.createElement('option'); o2.value = c.id; o2.textContent = c.nombre; filt.appendChild(o2);
+  });
+  if (prevSel) sel.value = prevSel;
+  if (prevFilt) filt.value = prevFilt;
+}
+
+function resetSubForm(){
+  sEditId = null;
+  $('sName').value = ''; $('sOrden').value = '';
+  $('sVisible').checked = true;
+  selSubImg.reset();
+  $('sSave').textContent = 'Guardar subcategoría';
+  $('sCancel').style.display = 'none';
+  $('sFormLbl').textContent = 'Nueva subcategoría';
+}
+
+async function saveSubcategoria(){
+  const nombre = $('sName').value.trim();
+  const catId = Number($('sCat').value);
+  if (!nombre){ toast('Ponle un nombre a la subcategoría'); $('sName').focus(); return; }
+  if (!catId){ toast('Elige a qué categoría pertenece'); return; }
+  const btn = $('sSave'); btn.textContent = 'Guardando…'; btn.disabled = true;
+  try {
+    const foto = await selSubImg.resolver();
+    const row = {
+      categoria_id: catId,
+      nombre: nombre,
+      orden: parseInt($('sOrden').value, 10) || 0,
+      visible: $('sVisible').checked
+    };
+    if (foto) row.foto_url = foto;
+    if (!sEditId) row.slug = slugify(nombre);
+
+    const { error } = sEditId
+      ? await sb.from('subcategorias').update(row).eq('id', sEditId)
+      : await sb.from('subcategorias').insert(row);
+    if (error) throw error;
+
+    toast(sEditId ? 'Subcategoría actualizada' : 'Subcategoría creada');
+    resetSubForm();
+    await refrescarTaxonomia();
+    renderSubList();
+  } catch (err){
+    console.error(err);
+    const m = errMsg(err);
+    if (/duplicate key/i.test(m)) toast('Esa categoría ya tiene una subcategoría con ese nombre.');
+    else if (/row-level security/i.test(m)) toast('Sin permiso. Revisa las políticas RLS.');
+    else toast('Error: ' + m);
+  } finally { btn.textContent = 'Guardar subcategoría'; btn.disabled = false; }
+}
+
+function editSubcategoria(s){
+  sEditId = s.id;
+  $('sCat').value = s.categoria_id;
+  $('sName').value = s.nombre || '';
+  $('sOrden').value = s.orden != null ? s.orden : '';
+  $('sVisible').checked = s.visible !== false;
+  selSubImg.cargar(s.foto_url || '');
+  $('sSave').textContent = 'Guardar cambios';
+  $('sCancel').style.display = 'inline-block';
+  $('sFormLbl').textContent = 'Editando subcategoría';
+  $('sName').scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+async function deleteSubcategoria(s){
+  if (!confirm('¿Eliminar la subcategoría "' + s.nombre + '"? Los productos que tenga quedarán sin subcategoría.')) return;
+  try {
+    const { error } = await sb.from('subcategorias').delete().eq('id', s.id);
+    if (error) throw error;
+    toast('Subcategoría eliminada');
+    if (sEditId === s.id) resetSubForm();
+    await refrescarTaxonomia();
+    renderSubList();
+  } catch (err){ toast('Error: ' + errMsg(err)); }
+}
+
+function renderSubList(){
+  const wrap = $('slist');
+  const filtro = $('sFilter').value;
+  wrap.innerHTML = '';
+  const lista = filtro ? subcategorias.filter(s => s.categoria_id === Number(filtro)) : subcategorias;
+  if (!lista.length){ wrap.innerHTML = '<p class="hint">No hay subcategorías que mostrar.</p>'; return; }
+  lista.forEach(s => {
+    const cat = categorias.find(c => c.id === s.categoria_id);
+    const row = document.createElement('div');
+    row.className = 'aitem' + (s.visible === false ? ' off' : '');
+    const thumb = s.foto_url
+      ? '<img class="circ-prev" src="' + esc(s.foto_url) + '" alt="">'
+      : '<div class="ph">🏷️</div>';
+    row.innerHTML = thumb +
+      '<div class="ai"><b>' + esc(s.nombre) + '</b>' +
+      '<span class="tag">' + esc(cat ? cat.nombre : 'Sin categoría') + ' · posición ' + (s.orden || 0) +
+      (s.visible === false ? ' · oculta' : '') + '</span></div>' +
+      '<button title="Editar">✏️</button><button title="Eliminar">🗑️</button>';
+    const bs = row.querySelectorAll('button');
+    bs[0].onclick = () => editSubcategoria(s);
+    bs[1].onclick = () => deleteSubcategoria(s);
+    wrap.appendChild(row);
+  });
+}
+
+$('cSave').onclick = saveCategoria;
+$('cCancel').onclick = resetCatForm;
+$('sSave').onclick = saveSubcategoria;
+$('sCancel').onclick = resetSubForm;
+$('sFilter').onchange = renderSubList;
+
 let aSearchTimer;
 $('aSearch').oninput = (e) => {
   clearTimeout(aSearchTimer);
@@ -1072,6 +1438,10 @@ document.addEventListener('keydown', e => {
 /* ================= ARRANQUE ================= */
 async function init(){
   renderCart();
+
+  // Selectores de imagen de las pestañas de categorías/subcategorías
+  selCatImg = crearSelectorImagen('cDrop','cFile','cImgUrl','cPrev','cPrevImg','cClearImg');
+  selSubImg = crearSelectorImagen('sDrop','sFile','sImgUrl','sPrev','sPrevImg','sClearImg');
 
   // 1. Pintamos SIEMPRE la estructura primero, con los datos de respaldo.
   //    Así el landing nunca se ve vacío mientras carga o si la base falla.
