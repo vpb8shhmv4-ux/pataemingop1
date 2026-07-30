@@ -557,16 +557,21 @@ let sinConexion = false;   // true cuando no se pudo leer la base
    En cuanto Supabase responde, estos valores se descartan. */
 const CATEGORIAS_FALLBACK = [
   { id:1, slug:'marcadores', nombre:'Marcadores',          descripcion:'Colores vibrantes y trazos precisos para cada idea.', orden:1 },
-  { id:2, slug:'cuadernos',  nombre:'Cuadernos & Agendas', descripcion:'El cuaderno perfecto para cada proyecto.',            orden:2 },
-  { id:3, slug:'arte',       nombre:'Arte & Creatividad',  descripcion:'Materiales para crear y experimentar.',               orden:3 },
-  { id:4, slug:'escolar',    nombre:'Escolar',             descripcion:'Todo para volver a clases con estilo.',               orden:4 },
-  { id:5, slug:'oficina',    nombre:'Oficina',             descripcion:'Orden y diseño para tu espacio de trabajo.',          orden:5 },
-  { id:6, slug:'regalos',    nombre:'Regalos',             descripcion:'Detalles listos para sorprender.',                    orden:6 }
+  { id:7, slug:'escritura',  nombre:'Escritura',           descripcion:'Bolígrafos, lápices y plumas para escribir cada día con gusto.', orden:2 },
+  { id:2, slug:'cuadernos',  nombre:'Cuadernos & Agendas', descripcion:'El cuaderno perfecto para cada proyecto.',            orden:3 },
+  { id:3, slug:'arte',       nombre:'Arte & Creatividad',  descripcion:'Materiales para crear y experimentar.',               orden:4 },
+  { id:4, slug:'escolar',    nombre:'Escolar',             descripcion:'Todo para volver a clases con estilo.',               orden:5 },
+  { id:5, slug:'oficina',    nombre:'Oficina',             descripcion:'Orden y diseño para tu espacio de trabajo.',          orden:6 },
+  { id:6, slug:'regalos',    nombre:'Regalos',             descripcion:'Detalles listos para sorprender.',                    orden:7 }
 ];
 const SUBCATEGORIAS_FALLBACK = [
   { id:101, categoria_id:1, slug:'acrilicos',     nombre:'Acrílicos' },
   { id:102, categoria_id:1, slug:'acuarela',      nombre:'Acuarela' },
   { id:103, categoria_id:1, slug:'permanentes',   nombre:'Permanentes' },
+  { id:119, categoria_id:7, slug:'boligrafos',    nombre:'Bolígrafos' },
+  { id:120, categoria_id:7, slug:'lapices',       nombre:'Lápices' },
+  { id:121, categoria_id:7, slug:'portaminas',    nombre:'Portaminas' },
+  { id:122, categoria_id:7, slug:'plumas',        nombre:'Plumas finas' },
   { id:104, categoria_id:2, slug:'argollados',    nombre:'Argollados' },
   { id:105, categoria_id:2, slug:'cosidos',       nombre:'Cosidos' },
   { id:106, categoria_id:2, slug:'agendas',       nombre:'Agendas' },
