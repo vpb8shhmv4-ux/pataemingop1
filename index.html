@@ -920,9 +920,14 @@ async function saveProduct(){
   if (!nombre){ toast('Ponle un nombre al producto'); $('aName').focus(); return; }
   if (isNaN(precio) || precio < 0){ toast('Pon un precio válido'); $('aPrice').focus(); return; }
   const btn = $('aSave'); btn.textContent = 'Guardando…'; btn.disabled = true;
+  let etapa = 'preparando';
   try {
     let foto_url = $('aImgUrl').value.trim();
-    if (aPendingFile){ btn.textContent = 'Subiendo foto…'; foto_url = await uploadPhoto(aPendingFile); }
+    if (aPendingFile){
+      etapa = 'subiendo la foto';
+      btn.textContent = 'Subiendo foto…';
+      foto_url = await uploadPhoto(aPendingFile);
+    }
     else if (!foto_url && aPendingUrl && aPendingUrl.indexOf('data:') !== 0) foto_url = aPendingUrl;
 
     const stockRaw = $('aStock').value.trim();
@@ -937,6 +942,8 @@ async function saveProduct(){
     };
     if (foto_url) row.foto_url = foto_url;
 
+    etapa = 'guardando el producto';
+    btn.textContent = 'Guardando…';
     const { error } = aEditId
       ? await sb.from('productos').update(row).eq('id', aEditId)
       : await sb.from('productos').insert(row);
@@ -948,7 +955,17 @@ async function saveProduct(){
     loadDestacados();
     if (!$('viewCat').hidden) loadProducts();
   } catch (err){
-    console.error(err); toast('Error: ' + errMsg(err));
+    console.error('Fallo ' + etapa + ':', err);
+    const m = errMsg(err);
+    // El error de RLS es el más común al empezar: distingue si falta la
+    // política del bucket de fotos o la de la tabla de productos.
+    if (/row-level security|violates row/i.test(m)){
+      toast(etapa === 'subiendo la foto'
+        ? 'Falta permiso para subir fotos. Ejecuta el SQL de políticas de Storage.'
+        : 'Falta permiso para guardar productos. Revisa las políticas RLS de la tabla.');
+    } else {
+      toast('Error al ' + etapa + ': ' + m);
+    }
   } finally { btn.textContent = 'Guardar producto'; btn.disabled = false; }
 }
 
